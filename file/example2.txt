@@ -1,0 +1,3 @@
+Hello Rakesh!
+This is a new line.
+Adding more text.Safe file handling with 'with'.
