@@ -20,6 +20,10 @@ s = pd.Series([10, 20, 30], index=["a", "b", "c"])
 print(s)
 
 print("2. Creating a DataFrame...")
+
+df = pd.DataFrame()
+print(df)
+
 data = {
     "Name": ["Rajesh", "Punam", "Prince"],
     "Age": [35, 32, 5],
