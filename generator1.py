@@ -12,5 +12,3 @@ def count_up_to(n):
 for num in count_up_to(5):
     print("inside for", num)
 
-
-
