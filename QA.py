@@ -3,7 +3,7 @@ Ans: Lists are mutable and allow modifications, while tuples are immutable and f
     my_list = [1, 2, 3]. my_tuple = (1, 2, 3)
     
 Explain what is meant by PEP?
-Ans: PEP stands for Python Enhancement Proposal. It’s essentially a design document that describes new features, improvements, or processes for the Python language.
+Ans: PEP stands for Python Enhancement Proposal. It's essentially a design document that describes new features, improvements, or processes for the Python language.
 
 What are some of Python’s key benefits?
 Ans: Its syntax is simple and close to English. Used in web development, data science, AI/ML, automation, scripting, scientific computing, and more.
@@ -25,9 +25,18 @@ Ans: A decorator is a special function that allows us to modify or enhance the b
      Used to define getter methods that can be accessed like attributes.
     
 Explain two main comprehensions. What do they do?
-Ans: comprehensions are a concise way to create new sequences (like lists, sets, or dictionaries) by looping and optionally applying conditions. The two most commonly used are list comprehensions and dictionary comprehensions.
-    numbers = [1, 2, 3, 4, 5]
-    squares = [x**2 for x in numbers]
+Ans: comprehensions are a way to create new sequences (like lists, sets, or dictionaries) by looping and optionally applying conditions. 
+     The two most commonly used are list comprehensions and dictionary comprehensions.
+     # List Comprehension :
+     numbers = [1, 2, 3, 4, 5]
+     squares = [x**2 for x in numbers]
+
+     # Creating a dictionary using dictionary comprehension
+     my_dict = {i: i**2 for i in range(1, 10)}
+
+     Unlike lists and dictionaries, there is no special “tuple comprehension.”
+     # Converting generator to tuple
+     my_tuple = tuple(i for i in range(1, 10))
 
 Could you explain two main built-in types of data in Python?
 Ans: List: An ordered, mutable collection of items. Allows duplicates, Supports indexing and slicing, Can be modified (add, remove, update elements).
@@ -194,6 +203,10 @@ Ans: the join() method is a string method used to combine elements of an iterabl
      print(sentence)
      # Python is awesome
 
+     join(): combines two DataFrames by index.
+     merge(): combines two DataFrames by the column or columns you specify.
+     concat(): combines two or more DataFrames vertically or horizontally.
+
 What is a break statement used for in Python?
 Ans: x = 1
      while x <= 10:
@@ -298,10 +311,11 @@ Ans: Shallow Copy : Creates a new object, but does not recursively copy nested o
      print(list1)   # [[1, 2], [3, 4]]
 
 Which processes are involved in memory management in Python?
-Ans: All Python objects and data structures live in a private heap managed by the interpreter.
-     Developers don’t directly access this heap; instead, Python’s memory manager handles allocation and deallocation.
-     each object keeps a reference counter showing how many variables point to it.
-     Reference counting + garbage collection ensure memory is freed when objects are no longer needed.
+Ans: Python manages memory allocation and deallocation automatically using a private heap, where all objects and data structures are stored. 
+     The memory management process is handled by Python’s memory manager, which optimizes memory usage, and the garbage collector, which deals 
+     with unused or unreferenced objects to free up memory.
+     Garbage collection in Python uses reference counting as well as a cyclic garbage collector to detect and collect unused data. 
+     When an object has no more references, it becomes eligible for garbage collection.
 
 Name a few examples of arguments in Python?
 Ans: Python supports positional, keyword, default, variable-length (*args, **kwargs), and required arguments.
@@ -433,20 +447,348 @@ Which approach do you use for making visualizations with Num/SciPy?
 Ans: NumPy/SciPy handle numerical computations, while visualization is typically done using Matplotlib or Seaborn. 
      The workflow is: compute with NumPy/SciPy → visualize with Matplotlib/Seaborn.   
 
+Would you say that lists are preferred over NumPy? Why or why not?
+Ans: The choice between Python lists and NumPy arrays depends on what you’re trying to achieve. They serve different purposes, and one isn’t universally “better,” 
+     but NumPy arrays are generally preferred for numerical and scientific computing.
 
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
+     Feature             Python Lists                                 NumPy Arrays
+     Data type           Can hold mixed types (int, str, etc.)        Homogeneous (all elements same type)
+     Performance         Slower for numerical operations              Much faster (optimized C under the hood)
+     Memory usage        Higher (stores Python objects)               Lower (compact, contiguous memory)
+     Functionality       Basic operations only                        Rich mathematical functions, broadcasting, linear algebra
+     Use case            General-purpose collections                  Numerical/scientific computing
+
+If you wanted to locally save images, how would you do this with Python?
+Ans: use libraries like PIL (Pillow), Matplotlib, or OpenCV, depending on how the image is created or processed.
+     The best way to locally save images with Python is using the open() function alongside the binary write mode ('wb'). 
+     One of the best ways to fetch image data is with the requests library. 
+
+Explain what self means in Python.
+Ans: self is a special variable used inside class methods to refer to the instance of the class that is currently being operated on. 
+
+Which approach would you use for random number generation in Python?
+Ans:  random number generation is usually done with the random module (for general use) or NumPy’s random submodule (for scientific computing).
+
+What are some examples of inheritance in Python? What does inheritance do?
+Ans: Inheritance in Python allows classes to derive attributes and behaviors from other classes, enabling code reuse, extensibility, and logical modeling of real‑world hierarchies.
+
+How would you create a class in Python? What do classes enable?
+Ans: Create a class using the class keyword. A class is essentially a blueprint for creating objects, bundling together data (attributes) and behavior (methods). 
+     Classes Enable :
+     Encapsulation → Group related data and functions together.
+     Reusability → Define once, create many objects.
+     Inheritance → Extend functionality by creating subclasses.
+     Polymorphism → Different classes can share method names but behave differently.
+     Organization → Makes large projects easier to structure and maintain.
+
+Explain what monkey patching means in Python.
+Ans: Monkey patching means dynamically modifying or extending the behavior of classes, modules, or functions at runtime — without altering their original source code. 
+     It’s often used to quickly fix bugs, add features, or change behavior in third‑party libraries.
+
+     class monkey:
+          def patch(self):
+               print ("patch() is being called")
+
+     def monk_p(self):
+          print ("monk_p() is being called")
+
+     # replacing address of "patch" with "monk_p"
+     monkey.patch = monk_p
+
+     obj = monkey()
+
+     obj.patch() #OP:  monk_p() is being called
+
+Explain what polymorphism means.
+Ans: polymorphism means “many forms”.
+     class Animal:
+    def speak(self):
+        print("This animal makes a sound.")
+
+class Dog(Animal):
+    def speak(self):
+        print("Woof!")
+
+class Cat(Animal):
+    def speak(self):
+        print("Meow!")
+
+for pet in [Dog(), Cat()]:
+    pet.speak()   # Woof! / Meow!
+
+Explain what encapsulation means.
+Ans: Encapsulation in Python means wrapping data and methods together inside a class and restricting direct access to internal details. 
+     It protects data integrity and supports abstraction.
+
+Which process would you follow to carry out data abstraction in Python?
+Ans: data abstraction is the process of hiding implementation details and exposing only the essential features of an object.
+     1. Use Classes and Methods
+     2. Use Access Modifiers (public, protected, private)
+     3. Use Properties and Getters/Setters  
+
+If you wanted to make an empty class, how would you do this in Python?
+Ans:
+    class MyClass:
+        pass
+
+What is the use of the super() function?
+Ans: super() function is used within a class to call a method from a parent class, often within the context of method overriding. 
+
+How can you prevent method overriding in Python?
+Ans: method overriding happens when a subclass provides a new implementation for a method that already exists in its parent class. 
+     If you want to prevent overriding, there are a few approaches you can follow:
+     
+     1. Use the final Decorator
+     
+from typing import final
+class Base:
+    @final
+    def show(self):
+        print("This method cannot be overridden.")
+
+class Child(Base):
+    def show(self):   # ❌ Error: Cannot override final method
+        print("Trying to override")
+
+2. Name Mangling (Private Methods)
+class Base:
+    def __secret(self):
+        print("Hidden method")
+
+class Child(Base):
+    def __secret(self):   # This creates a new method, not overriding
+        print("Different method")
+
+3. Design Choice: Composition Instead of Inheritance
+
+What is PIP and how do you use it?
+Ans: PIP is a Python package manager that’s used to simplify the installation and management of third-party libraries.
+
+Explain, with code, how you would copy an object in Python.
+Ans: Through Shallow and deep copies
+     shallow_copied_list = copy.copy(original_list)
+     deep_copied_list = copy.deepcopy(original_list)
+
+Tell me how you would randomize the items on a list with Python.
+Ans: Using random.shuffle()
+     
+     import random
+     items = [1, 2, 3, 4, 5]
+     random.shuffle(items)
+     print(items)   # e.g. [3, 5, 1, 4, 2]
+
+
+     items = [1, 2, 3, 4, 5]
+     shuffled = random.sample(items, len(items))
+     print(shuffled)   # e.g. [2, 5, 1, 4, 3]
+
+What is the Global Interpreter Lock (GIL)? Why is it important?
+Ans: The Global Interpreter Lock (GIL) is a mutex in CPython that ensures only one native thread executes Python bytecode at a time. 
+     It’s important because it prevents race conditions, though developers often use multiprocessing or optimized libraries to bypass its limitations.
+
+What does the nonlocal statement do?
+Ans: the nonlocal statement is used to indicate that a variable in a nested function isn’t local.
+
+     def outer():
+          x = "outer value"
+
+          def inner():
+               nonlocal x   # refers to 'x' in outer()
+               x = "modified by inner"
+               print("Inner:", x)
+
+          inner()
+          print("Outer:", x)
+
+     outer()
+OP:  Inner: modified by inner
+     Outer: modified by inner
+
+What’s the difference between a Python package and a Python module? 
+Ans: A Python module is a single file containing Python code. 
+     A packages are code packets that contain multiple modules and/or sub-packages.   
+
+ How would you use Python to fetch every 10th item from a list? 
+ Ans: every_10th_item = original_list[::10]
+
+ What are metaclasses in Python and why are they important? 
+ Ans:  Metaclasses are classes that create and control other classes. They are important because they allow developers to customize class creation and behavior, 
+     enabling advanced patterns like singleton, proxy, and decorator implementations.
+
+     class Meta(type):
+         def __new__(cls, name, bases, dct):
+          print(f"Creating class {name}")
+          return super().__new__(cls, name, bases, dct)
+
+     class MyClass(metaclass=Meta):
+          pass
+
+What is the functools module used for in Python? 
+Ans: The functools module in Python provides higher order functions and decorators that let you modify, extend, or optimize other functions without rewriting them.
+
+What is __init__() in Python?
+Ans: The __init__() method is known as a constructor. It is used to initialize an object's state when it is created. This method is automatically called when a new 
+     instance of a class is instantiated.
+
+What is the difference between a mutable data type and an immutable data type?
+Ans: Mutable data types:
+     Definition: Mutable data types are those that can be modified after their creation.
+     Examples: List [1, 2, 3], Dictionary {'a': 1, 'b': 2}, Set {1, 2, 3}.
+     Characteristics: Elements can be added, removed, or changed.
+     Use Case: Suitable for collections of items where frequent updates are needed.
+
+     Immutable data types:
+     Definition: Immutable data types are those that cannot be modified after their creation.
+     Examples: Numeric (int, float), String, Tuple.
+     Chara     cteristics: Elements cannot be changed once set; any operation that appears to modify an immutable object will create a new object.
+
+     # Numeric Example
+     a_num = 10
+     a_num = 20  # Creates a new integer object
+     print(a_num)  # Output: 20
+
+     # String Example
+     a_str = "hello"
+     a_str = "world"  # Creates a new string object
+     print(a_str)  # Output: world
+
+     # Tuple Example
+     a_tuple = (1, 2, 3)
+     # a_tuple[0] = 4  # This will raise a TypeError
+     print(a_tuple)  # Output: (1, 2, 3)  
+
+Can you explain common searching and graph traversal algorithms in Python?
+Ans: Binary search, AVL Tree, Depth First Search (DFS), Breadth First Search (BFS), Dijkstra's algorithm, A* search algorithm, and Bellman-Ford algorithm are some common searching and graph traversal algorithms in Python.
+
+What is a KeyError in Python, and how can you handle it?
+Ans: A KeyError in Python occurs when you try to access a key that doesn’t exist in a dictionary. 
+     To handle this error, you have a few options:
+     Use the .get() method: This method returns None instead of throwing an error if the key isn’t found.
+     Use a try-except block:
+     Check for the key with in: You can check if a key exists in the dictionary using if key in dictionary before trying to access it.
+
+What is the Python “with” statement designed for?
+Ans: The with statement is used for exception handling to make code cleaner and simpler. It is generally used for the management of common resources like 
+     creating, editing, and saving a file
+     # using with statement
+     with open('myfile.txt', 'w') as file:
+          file.write('DataCamp Black Friday Sale!!!')
+
+Why use else in try/except construct in Python?
+Ans: try: and except: are commonly known for exceptional handling in Python, so where does else: come in handy? else: will be triggered when no exception is raised.
+
+What are context managers in Python, and how are they implemented?
+Ans: Context managers in Python are used to manage resources, ensuring that they are properly acquired and released. 
+     The most common use of context managers is the with statement.
+     
+     class FileManager:
+          pass
+    
+     with FileManager('test.txt', 'w') as f:
+          f.write('Hello, world!')
+     In this example, the FileManager class is a context manager that ensures the file is properly closed after it is used within the with statement.
+
+How do you identify and deal with missing values?
+Ans: We can identify missing values in the DataFrame by using the isnull() function and then applying sum().
+
+Which Python libraries have you used for visualization? 
+Ans: Data visualization is the most important part of data analysis. You get to see your data in action, and it helps you find hidden patterns.
+     The most popular Python data visualization libraries are:
+     Matplotlib, Seaborn, Plotly, Bokeh
+
+How would you normalize or standardize a dataset in Python?
+Ans: Normalization scales data to a specific range, usually [0, 1], while standardization transforms it to have a mean of 0 and a standard deviation of 1.
+
+How can you replace string space with a given character in Python?
+Ans: str.replace(" ", "ch")
+
+Explain how can you make a Python Script executable on Unix
+Ans: Script file must begin with #!/usr/bin/env python
+
+What is the difference between Python Arrays and lists?
+Ans: Arrays in python can only contain elements of same data types i.e., data type of array should be homogeneous and consumes far less memory than lists.
+     Lists in python can contain elements of different data types i.e., data type of lists can be heterogeneous. It has the disadvantage of consuming large memory.
+
+import array
+a = array.array('i', [1, 2, 3])
+for i in a:
+    print(i, end=' ')    #OUTPUT: 1 2 3
+a = array.array('i', [1, 2, 'string'])    #OUTPUT: TypeError: an integer is required (got type str)
+a = [1, 2, 'string']
+for i in a:
+   print(i, end=' ')    #OUTPUT: 1 2 string
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
