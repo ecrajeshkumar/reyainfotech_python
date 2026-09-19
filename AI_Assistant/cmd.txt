@@ -1,0 +1,27 @@
+# install ollama
+ollama pull qwen3:4b
+ollama run qwen3:4b
+
+# Create viertual environment
+py -m venv .venv
+# Activate this environment
+.venv\Scripts\Activate
+
+# Getting Error then run below cmd
+Get-ExecutionPolicy
+Set-ExecutionPolicy RemoteSigned
+.venv\Scripts\Activate
+
+pip install openai python-dotenv
+
+# To test 
+ollama -v
+ollama --version
+# List installed models (this also confirms Ollama is running):
+ollama list
+# To test ollama
+ollama run qwen3:4b "Hello, explain Python decorators simply."
+# Verify API endpoint
+curl http://localhost:11434/api/version
+
+
