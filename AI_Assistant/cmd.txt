@@ -24,4 +24,13 @@ ollama run qwen3:4b "Hello, explain Python decorators simply."
 # Verify API endpoint
 curl http://localhost:11434/api/version
 
+# Install the Embedding models
+ollama pull nomic-embed-text   
+ollama list
+
+(.venv) PS E:\ReyaInfoTech\python\AI_Assistant> ollama list
+NAME                       ID              SIZE      MODIFIED       
+nomic-embed-text:latest    0a109f422b47    274 MB    16 seconds ago  ====> this is embedded models  
+qwen3:4b                   359d7dd4bcda    2.5 GB    3 days ago      ====> this is chat models
+
 
