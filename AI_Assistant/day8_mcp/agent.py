@@ -81,12 +81,11 @@ async def main():
 
     # Step 2: Discover available tools on the server.
     tools = await discover_tools(client)
-
-    print("Available Tools")
-    print("----------------")
-    for tool in tools:
-        print(tool.name)
-    print("----------------")
+    # print("Available Tools")
+    # print("----------------")
+    # for tool in tools:
+    #     print(tool.name)
+    # print("----------------")
 
     ### Step 3: Planner: Take the User Input (Question). Create Tool Descriptions for each tool. 
     # Then create a prompt by combining user input and Tool Description.  and Give this prompt 
@@ -98,7 +97,6 @@ async def main():
     tool_result = await execute_tools(client, tool_name)
 
     # Step 5: Generate a natural language response.
-
     final_answer = generate_response(user_request, tool_result)
     print(final_answer)
 

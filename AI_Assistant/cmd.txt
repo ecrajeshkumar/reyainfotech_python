@@ -34,3 +34,7 @@ nomic-embed-text:latest    0a109f422b47    274 MB    16 seconds ago  ====> this 
 qwen3:4b                   359d7dd4bcda    2.5 GB    3 days ago      ====> this is chat models
 
 
+pip install fastmcp
+pip show fastmcp
+
+pip install chromadb
