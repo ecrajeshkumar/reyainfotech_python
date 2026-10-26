@@ -25,7 +25,7 @@ ollama run qwen3:4b "Hello, explain Python decorators simply."
 curl http://localhost:11434/api/version
 
 # Install the Embedding models
-ollama pull nomic-embed-text   
+ollama pull nomic-embed-text   #### ollama pull qwen3:1.7b
 ollama list
 
 (.venv) PS E:\ReyaInfoTech\python\AI_Assistant> ollama list
@@ -38,3 +38,14 @@ pip install fastmcp
 pip show fastmcp
 
 pip install chromadb
+
+pip install langgraph
+pip show langgraph
+
+User : Generate the password and tell current time
+
+pip install crewai
+pip install -U "crewai[ollama]"
+
+pip install requests beautifulsoup4
+
